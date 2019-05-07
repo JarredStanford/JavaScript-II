@@ -80,8 +80,8 @@ console.log(ticketPriceTotal);
 
 // Problem 1
 //What are the first names of runners who donated $100 or more so we can send thank you cards.
-let BigSpenders = runners.filter(price => price.donation > 100).map(name => name.first_name);
-console.log(BigSpenders);
+let bigSpenders = runners.filter(price => price.donation > 100).map(name => name.first_name);
+console.log(bigSpenders);
 // Problem 2
 //How many different companies were present?
 let uniqueCompanies = runners.map(company => company.company_name).length;
