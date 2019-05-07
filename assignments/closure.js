@@ -22,18 +22,16 @@ console.log(counter()); // 2
 
 // ==== Challenge 3: Create a counter function with an object that can increment and decrement ====
 let sum = 0;
-let counterFactory = {
-    "increment": function() {
-      return function() {
+let counterFactory = function() {
+  return {
+    increment: function() {
       return sum += 1;
-  }
-  }(0),
-    "decrement": function() {
-      return function() {
+  },
+     decrement: function() {
       return sum -= 1;
-    }
-  }(0)
-};
+  }
+}
+}();
   // Return an object that has two methods called `increment` and `decrement`.
   // `increment` should increment a counter variable in closure scope and return it.
   // `decrement` should decrement the counter variable and return it
