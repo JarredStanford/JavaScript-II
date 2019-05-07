@@ -14,8 +14,7 @@ console.log(closure());
 // ==== Challenge 2: Create a counter function ====
 let counter = (function(n) {
   return function() {
-    n++;
-    return n;
+    return n += 1;
   }
 }(0));
 console.log(counter()); // 1
@@ -25,8 +24,10 @@ console.log(counter()); // 2
 let counterFactory = (function(sum) {
   let counter = {
     "increment": function() {
-      sum++;
-      return sum;
+      return sum += 1;
+    },
+    "decrement": function() {
+      return sum -= 1;
     }
   } 
     return function() {
@@ -40,3 +41,4 @@ let counterFactory = (function(sum) {
 console.log(counterFactory());
 console.log(counterFactory());
 console.log(counterFactory());
+
