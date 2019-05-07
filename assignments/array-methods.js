@@ -55,29 +55,40 @@ const runners = [{"id":1,"first_name":"Charmain","last_name":"Seiler","email":"c
 
 // ==== Challenge 1: Use .forEach() ====
 // The event director needs both the first and last names of each runner for their running bibs.  Combine both the first and last names into a new array called fullName. 
-let fullName = [];
-console.log(fullName);
+let fullName = runners.forEach(function(runner) {
+    console.log(runner.first_name, runner.last_name)
+});
 
 // ==== Challenge 2: Use .map() ====
 // The event director needs to have all the runner's first names converted to uppercase because the director BECAME DRUNK WITH POWER. Convert each first name into all caps and log the result
-let allCaps = [];
+let allCaps = runners.map(caps => caps.first_name.toUpperCase());
+
 console.log(allCaps); 
 
 // ==== Challenge 3: Use .filter() ====
 // The large shirts won't be available for the event due to an ordering issue.  Get a list of runners with large sized shirts so they can choose a different size. Return an array named largeShirts that contains information about the runners that have a shirt size of L and log the result
-let largeShirts = [];
+let largeShirts = runners.filter(size => size.shirt_size === "L");
 console.log(largeShirts);
 
 // ==== Challenge 4: Use .reduce() ====
-// The donations need to be tallied up and reported for tax purposes. Add up all the donations into a ticketPriceTotal array and log the result
-let ticketPriceTotal = [];
+// The donations need to be tallied up and repoog the result
+let ticketPriceTotal = runners.map(runner => runner.donation).reduce((total, amount) => total + amount);;
 console.log(ticketPriceTotal);
 
 // ==== Challenge 5: Be Creative ====
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
 // Problem 1
-
+//What are the first names of runners who donated $100 or more so we can send thank you cards.
+let BigSpenders = runners.filter(price => price.donation > 100).map(name => name.first_name);
+console.log(BigSpenders);
 // Problem 2
-
+//How many different companies were present?
+let uniqueCompanies = runners.map(company => company.company_name).length;
+console.log(uniqueCompanies);
+//I now realize there were no duplicate companies but it is still a potentially good question!
 // Problem 3
+//We would like to create a list of emails to add to our mailing list for the future because even if you 
+//are donating to charity, you better believe we are storing and selling your data!
+let mailingList = runners.map(address => address.email);
+console.log(JSON.stringify(mailingList));
