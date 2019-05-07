@@ -24,30 +24,21 @@ console.log(counter()); // 2
 let sum = 0;
 let counterFactory = {
     "increment": function() {
+      return function() {
       return sum += 1;
-    },
+  }
+  }(0),
     "decrement": function() {
+      return function() {
       return sum -= 1;
     }
-  };
-let increase = function() {
-    return function() {
-    return counterFactory.increment();
-}
-}(0);
-let decrease = function() {
-  return function() {
-  return counterFactory.decrement();
-}
-}(0);
+  }(0)
+};
   // Return an object that has two methods called `increment` and `decrement`.
   // `increment` should increment a counter variable in closure scope and return it.
   // `decrement` should decrement the counter variable and return it
 
-console.log(increase());
-console.log(increase());
-console.log(decrease());
-console.log(decrease());
-console.log(decrease());
-console.log(increase());
+console.log(counterFactory.increment());
+console.log(counterFactory.increment());
+console.log(counterFactory.decrement());
 
